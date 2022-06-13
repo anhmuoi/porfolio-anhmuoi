@@ -35,6 +35,11 @@ import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
 
+import workEcm from '../assets/work-ecm.png';
+import workRtc from '../assets/work-rtc.png';
+import workKkp from '../assets/work-kkp.png';
+import workFab from '../assets/work-fab.png';
+
 export default {
   email,
   mobile,
@@ -69,4 +74,8 @@ export default {
   nb,
   skype,
   spotify,
+  workEcm,
+  workRtc,
+  workKkp,
+  workFab,
 };

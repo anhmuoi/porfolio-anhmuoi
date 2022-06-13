@@ -1,10 +1,41 @@
+/* eslint-disable key-spacing */
 import React, { useState, useEffect } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
-
+import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
 import './Work.scss';
+
+const dataWorks = [
+  {
+    name: 'Fabric',
+    imgUrl: images.workFab,
+    projectLink:'https://anhmuoi-fabricjs.netlify.app/',
+    codeLink: 'https://github.com/anhmuoi/fabric-project',
+    tags: ['React JS'],
+  },
+  {
+    name: 'kakaopage',
+    imgUrl: images.workKkp,
+    projectLink:'https://kakaopage.netlify.app',
+    codeLink: '',
+    tags: ['React JS'],
+  },
+  {
+    name: 'ecommerce',
+    imgUrl: images.workEcm,
+    projectLink:'https://anhmuoi-web-rtk.netlify.app',
+    codeLink: 'https://github.com/anhmuoi/learn-reactjs',
+    tags: ['React JS'],
+  },
+  {
+    name: 'web-rtc',
+    imgUrl: images.workRtc,
+    projectLink:'https://anhmuoi-web-rtc.netlify.app',
+    codeLink: 'https://github.com/anhmuoi/web-rtc',
+    tags: ['React JS'],
+  },
+];
 
 const Work = () => {
   const [works, setWorks] = useState([]);
@@ -13,12 +44,8 @@ const Work = () => {
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   useEffect(() => {
-    const query = '*[_type == "works"]';
-
-    client.fetch(query).then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    });
+    setWorks(dataWorks);
+    setFilterWork(dataWorks);
   }, []);
 
   const handleWorkFilter = (item) => {
@@ -41,11 +68,11 @@ const Work = () => {
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) => (
+        {['React JS'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
-            className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
+            className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : 'item-active'}`}
           >
             {item}
           </div>
@@ -62,7 +89,7 @@ const Work = () => {
             <div
               className="app__work-img app__flex"
             >
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <img src={work.imgUrl} alt={work.name} />
 
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
